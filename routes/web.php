@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('/');
 
 Route::name('user.')->group(function () {
     Route::view('/private', 'private')->middleware('auth')->name('private');
@@ -28,7 +28,10 @@ Route::name('user.')->group(function () {
 
     Route::post('/login', []);
 
-    Route::post('/logout', []);
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect(route('/'));
+    });
 
     Route::get('/registration', function () {
         if (Auth::check()) {
@@ -36,4 +39,6 @@ Route::name('user.')->group(function () {
         }
         return view('registration');
     })->name('registration');
+
+    Route::post('/registration', [\App\Http\Controllers\RegisterController::class, 'save']);
 });

@@ -15,26 +15,34 @@
 </head>
 <body>
 
-<form class="col-3 offset-4 border rounded" method="POST" action="{{ route('user.registration') }}">
-    @csrf
-    <div class="form-group">
-        <label for="email" class="col-form-label-lg">Ваш email</label>
-        <input type="email" class="form-control" id="email" value="" placeholder="Email">
-        @error('email')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="password" class="col-form-label-lg">Пароль</label>
-        <input type="password" class="form-control" id="password" value="" placeholder="Пароль">
-        @error('password')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-lg btn-primary" value="1" name="sendMe">Зарегистрироваться</button>
-    </div>
-</form>
+@error('formError')
+<div class="alert alert-danger">{{ $message }}</div>
+@enderror
+
+<div class="container">
+    <h1 class="mt-4">Регистрация</h1>
+
+    <form class="col-3 p-3 offset-4 border rounded" method="POST" action="{{ route('user.registration') }}">
+        @csrf
+        <div class="form-group">
+            <label for="email" class="col-form-label-lg">Ваш email</label>
+            <input type="email" class="form-control" id="email" name="email" value="" placeholder="Email">
+            @error('email')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-form-label-lg">Пароль</label>
+            <input type="password" class="form-control" id="password" name="password" value="" placeholder="Пароль">
+            @error('password')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="form-group mt-3">
+            <button type="submit" class="btn btn-lg btn-primary" value="1" name="sendMe">Зарегистрироваться</button>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>
