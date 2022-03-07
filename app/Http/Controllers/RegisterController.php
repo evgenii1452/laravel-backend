@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -27,7 +26,7 @@ class RegisterController extends Controller
 
         $user = User::create($validateFields);
         if ($user) {
-            auth()->login($user);
+            Auth::login($user);
             return redirect(route('user.private'));
         } else {
             return redirect(route('user.registration'))->withErrors([

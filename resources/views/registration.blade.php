@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+@include('navbar')
 
 @error('formError')
 <div class="alert alert-danger">{{ $message }}</div>

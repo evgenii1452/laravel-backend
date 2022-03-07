@@ -31,7 +31,7 @@ Route::name('user.')->group(function () {
     Route::get('/logout', function () {
         Auth::logout();
         return redirect(route('/'));
-    });
+    })->name('logout');
 
     Route::get('/registration', function () {
         if (Auth::check()) {

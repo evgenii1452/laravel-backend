@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+@include('navbar')
 
 <div class="container">
     <h1 class="mt-4">Авторизация</h1>
