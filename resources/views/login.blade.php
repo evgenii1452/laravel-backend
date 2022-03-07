@@ -16,6 +16,10 @@
 <body>
 @include('navbar')
 
+@error('formError')
+<div class="alert alert-danger">{{ $message }}</div>
+@enderror
+
 <div class="container">
     <h1 class="mt-4">Авторизация</h1>
 
@@ -23,14 +27,14 @@
         @csrf
         <div class="form-group">
             <label for="email" class="col-form-label-lg">Ваш email</label>
-            <input type="email" class="form-control" id="email" value="" placeholder="Email">
+            <input type="email" class="form-control" id="email" value="" name="email" placeholder="Email">
             @error('email')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
             <label for="password" class="col-form-label-lg">Пароль</label>
-            <input type="password" class="form-control" id="password" value="" placeholder="Пароль">
+            <input type="password" class="form-control" id="password" value="" name="password" placeholder="Пароль">
             @error('password')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror

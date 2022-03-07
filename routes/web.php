@@ -26,7 +26,7 @@ Route::name('user.')->group(function () {
         return view('login');
     })->name('login');
 
-    Route::post('/login', []);
+    Route::post('/login', [\App\Http\Controllers\LoginController::class, 'login']);
 
     Route::get('/logout', function () {
         Auth::logout();
