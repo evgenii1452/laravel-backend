@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ThingController;
 use Illuminate\Support\Facades\Route;
@@ -60,5 +61,18 @@ Route::group(['middleware' => 'auth'], function() {
         ->name('thing.delete');
     Route::get('/things/', [ThingController::class, 'index'])
         ->name('thing.index');
+
+    Route::get('/places/create', [PlaceController::class, 'create'])
+        ->name('place.create');
+    Route::post('/places', [PlaceController::class, 'save'])
+        ->name('place.store');
+    Route::get('/places/{id}/edit', [PlaceController::class, 'edit'])
+        ->name('place.edit');
+    Route::put('/places/{id}', [PlaceController::class, 'update'])
+        ->name('place.update');
+    Route::delete('/places/{id}', [PlaceController::class, 'delete'])
+        ->name('place.delete');
+    Route::get('/places/', [PlaceController::class, 'index'])
+        ->name('place.index');
 
 });
