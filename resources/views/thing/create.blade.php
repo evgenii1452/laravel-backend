@@ -6,7 +6,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Авторизация</title>
+    <title>Создание вещей</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

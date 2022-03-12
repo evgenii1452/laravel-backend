@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ThingController;
+use App\Http\Controllers\UseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -75,4 +76,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/places/', [PlaceController::class, 'index'])
         ->name('place.index');
 
+    Route::get('/use/create', [UseController::class, 'create'])
+        ->name('use.create');
+    Route::post('/use', [UseController::class, 'save'])
+        ->name('use.store');
+    Route::get('/use/', [UseController::class, 'index'])
+        ->name('use.index');
+    Route::delete('/use/{id}', [UseController::class, 'delete'])
+        ->name('use.delete');
 });

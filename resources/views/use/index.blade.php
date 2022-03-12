@@ -6,7 +6,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Список мест</title>
+    <title>Вещи в использовании</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,37 +21,33 @@
 @enderror
 
 <div class="container">
-    <h1 class="mt-4">Список мест</h1>
+    <h1 class="mt-4">Вещи в использовании</h1>
 
-    <a href="{{route('place.create')}}" class="btn btn-primary">
+    <a href="{{route('use.create')}}" class="btn btn-primary">
         Создать
     </a>
     <table class="table table-striped">
         <thead>
         <tr>
             <th>#</th>
-            <th>Название</th>
-            <th>Описание</th>
-            <th>Местро пребывания</th>
-            <th>В работе</th>
+            <th>Вещь</th>
+            <th>Место</th>
+            <th>Пользватель</th>
+            <th>Кол-во</th>
             <th>Действия</th>
         </tr>
         </thead>
         <tbody>
 
-        @foreach($places as $place)
+        @foreach($uses as $use)
             <tr>
-                <td>{{$place->id}}</td>
-                <td>{{$place->name}}</td>
-                <td>{{$place->description}}</td>
-                <td>{{$place->repair}}</td>
-                <td>{{$place->work ? 'Да' : 'Нет'}}</td>
+                <td>{{$use->id}}</td>
+                <td>{{$use->thing->name}}</td>
+                <td>{{$use->place->name}}</td>
+                <td>{{$use->user->email}}</td>
+                <td>{{$use->amount}}</td>
                 <td class="col row">
-                    <a href="{{route('place.edit', ['id' => $place->id])}}" class="col btn btn-primary">
-                        Изменить
-                    </a>
-
-                    <form class="col" method="POST" action="{{route('place.delete', ['id' => $place->id])}}">
+                    <form class="col" method="POST" action="{{route('use.delete', ['id' => $use->id])}}">
                         @csrf
                         @method('delete')
                         <button class="btn btn-danger">Удалить</button>
